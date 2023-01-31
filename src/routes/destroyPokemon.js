@@ -1,16 +1,16 @@
-const { Pokemon } = require('../db/sequelize')
+const  db  = require('../../models/index')
 const auth = require('../auth/auth')
 
 module.exports = (app) => {
-    app.delete('/api/pokemons/:id', auth, (req, res) => {
-        return Pokemon.findByPk(req.params.id)
+    app.delete('/api/pokemons/:id',  (req, res) => {
+        return db.Pokemons.findByPk(req.params.id)
             .then(pokemon => {
                 if (pokemon === null) {
                     const message = 'Le pokémon demandé n\'existe pas. Réessayez avec un autre identifiant'
                     return res.status(404).json({ message })
                 }
                 const pokemonDeleted = pokemon
-                Pokemon.destroy({
+                db.Pokemons.destroy({
                     where: { id: pokemon.id }
                 })
                     .then(_ => {

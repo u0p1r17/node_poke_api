@@ -1,10 +1,10 @@
-const { Pokemon } = require('../db/sequelize')
+const  db  = require('../../models/index')
 const { ValidationError } = require('sequelize')
 const auth = require('../auth/auth')
 
 module.exports = (app) => {
-    app.post('/api/pokemons', auth, (req, res) => {
-        Pokemon.create(req.body)
+    app.post('/api/pokemons', (req, res) => {
+        db.Pokemons.create(req.body)
             .then(pokemon => {
                 const message = `Le pokémon ${req.body.name} a bien été crée.`
                 res.json({ message, data: pokemon })

@@ -1,5 +1,14 @@
+'use strict'
+const {
+    Model
+} = require()
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('User', {
+    class User extends Model {
+        static associate(models){
+
+        }
+    }
+    User.init({
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -15,4 +24,5 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         }
     })
+    return User
 }

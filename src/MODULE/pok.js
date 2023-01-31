@@ -1,6 +1,14 @@
+'user strict'
+const { Model } = require("sequelize")
+
 const valideTypes = ['Plante','Poison','Feu','Eau','Insecte','Vol','Normal','Electrik','Fée']
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('Pokemon', {
+    class Pokemon extends Model {
+        static associate(models){
+
+        }
+    }
+    Pokemon.init({
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -87,9 +95,11 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         }
-    }, {
+    }, 
+    {
         timestamps: true,
         createdAt: 'created',
         updatedAt: false
     })
+    return Pokemon
 }

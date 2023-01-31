@@ -1,6 +1,6 @@
-const { Pokemon } = require('../db/sequelize')
 const { Op } = require('sequelize')
 const auth = require('../auth/auth')
+const  db  = require('../../models/index')
 
 module.exports = (app) => {
     app.get('/api/pokemons' , (req, res) => {
@@ -11,9 +11,8 @@ module.exports = (app) => {
             if(name.length < 3){
                 const message = `Le terme de recherche doit contenir au moins 2 caractères.`
                 return res.Status(400).json({ message })
-            }
-            
-            return Pokemon.findAndCountAll({
+            }       
+            return db.Pokemons.findAndCountAll({
                 where: {
                     name: {
                         [Op.like] : `%${name}%`
@@ -26,8 +25,8 @@ module.exports = (app) => {
                     const message = `Il ya ${count} pokémonm qui correspondent au term ${name}.`
                     res.json({ message, data: rows })
                 })
-        } else {
-            Pokemon.findAll({order: ['name']})
+        } else {       
+            db.Pokemons.findAll({order: ['name']})
                 .then(pokemons => {
                     const message = 'La liste des pokémons a bien été récupérée.'
                     res.json({ message, data: pokemons })
