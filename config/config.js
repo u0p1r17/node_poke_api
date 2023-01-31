@@ -17,7 +17,11 @@ module.exports = {
     "username": process.env.MYSQLUSER,
     "password": process.env.MYSQLPASSWORD,
     "host": process.env.MYSQLHOST,
-    "port": process.env.MYSQLPORT,  
-    "dialect": 'mysql'
+    "port": process.env.MYSQLPORT,
+    "logging": true,  
+    "dialect": "mariadb",
+    "dialectOPtions": {
+      "timezone": "Etc/GMT-2"
+    }
   }
 }
