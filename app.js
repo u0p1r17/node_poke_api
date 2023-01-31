@@ -7,7 +7,7 @@ const db = require('./models/index')
 
 
 const app = express();
-const port = process.env.MYSQLPORT || 3005;
+const port = process.env.PORT || 3005;
 
 app.use(favicon(__dirname + "/favicon.ico")).use(bodyParser.json());
 
