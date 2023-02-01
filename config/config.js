@@ -1,4 +1,4 @@
-console.log(process.env)
+
 module.exports = {
   development:{
     "database": "pokedex",
@@ -7,9 +7,9 @@ module.exports = {
     "host": "localhost",
     "port":"3333",  
     "logging": true,
-    "dialect": "mariadb",
+    "dialect": "mysql",
     "dialectOPtions": {
-      "timezone": "Etc/GMT-2"
+      
     }
   },
   production: { 
@@ -19,9 +19,9 @@ module.exports = {
     "host": process.env.MYSQLHOST,
     "port": process.env.MYSQLPORT,
     "logging": true,  
-    "dialect": "mariadb",
+    "dialect": "mysql",
     "dialectOPtions": {
-      "timezone": "Etc/GMT-2"
+      
     }
   }
 }
