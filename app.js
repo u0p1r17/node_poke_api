@@ -14,6 +14,8 @@ app
 
 db.sequelize.sync()
 
+app.get('/', (req, res) => res.send('hello, Express54!'))
+
 // Ici, nous placerons futurs points de terminaison.
 require("./src/routes/findAllPokemons")(app);
 require("./src/routes/findPokemonByPk")(app);
