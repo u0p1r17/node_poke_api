@@ -2,7 +2,7 @@ const  db  = require('../../models/index')
 const auth = require('../auth/auth')
 
 module.exports = (app) => {
-    app.get('/api/pokemons/:id', async (req, res) => {
+    app.get('/api/pokemons/:id', auth, async (req, res) => {
         const pokemon = await db.Pokemons.findByPk(req.params.id)
         try {
             if(pokemon === null){

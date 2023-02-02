@@ -3,7 +3,7 @@ const auth = require('../auth/auth')
 const  db  = require('../../models/index')
 
 module.exports = (app) => {
-    app.get('/api/pokemons' , async (req, res) => {
+    app.get('/api/pokemons' , auth, async (req, res) => {
         if (req.query.name) {
             // example of true http://localhost:3000/api/pokemons?name=abo
             const name = req.query.name

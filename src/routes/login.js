@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken')
 const privateKey = require('../auth/private_key')
 
 module.exports = (app) => {
-    app.post('/api/login', (req, res) => {
+    app.post('/api/login', (req,res) => {
 
-        User.findOne({ where: { username: req.body.username } }).then(user => {
+        db.Users.findOne({ where: { username: req.body.username } }).then(user => {
 
             if (!user) {
                 const message = `l'utilisateur demandé n'existe pas.`

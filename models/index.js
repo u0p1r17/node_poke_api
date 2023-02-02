@@ -54,6 +54,7 @@ fs
   })
   .forEach(file => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    console.log("Index.js 57 ===============>", model)
     db[model.name] = model;
   });
 
