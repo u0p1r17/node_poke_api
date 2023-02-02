@@ -1,20 +1,18 @@
 const express = require("express");
 const favicon = require("serve-favicon");
 const bodyParser = require("body-parser");
-const { Sequelize } = require("sequelize");
 const db = require('./models/index')
-
-
+const cors = require('cors')
 
 const app = express();
 const port = process.env.PORT || 3005;
 
-app.use(favicon(__dirname + "/favicon.ico")).use(bodyParser.json());
+app
+  .use(favicon(__dirname + "/favicon.ico"))
+  .use(bodyParser.json())
+  .use(cors());
 
 db.sequelize.sync()
-
-
-
 
 // Ici, nous placerons futurs points de terminaison.
 require("./src/routes/findAllPokemons")(app);
